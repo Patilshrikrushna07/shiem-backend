@@ -14,7 +14,7 @@ const tasksUpdateModel = mongoose.Schema(
       type: Number,
       required: true,
     },
-    comment: {
+    comment: {     
       type: String,
       required: true,
     },

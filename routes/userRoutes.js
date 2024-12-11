@@ -12,7 +12,7 @@ const { protect, adminProtect } = require("../middlewares/authMiddleware");
 const router = express.Router();
 
 router.route("/register").post(register);
-router.route("/login").get(login);
+router.route("/login").post(login);
 router.route("/update-password").post(updatePassword);
 router.route("/add-team-member").post(adminProtect,register);
 router.route("/get-member-info/:id").get(protect,getMemberInfo);
