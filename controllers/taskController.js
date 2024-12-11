@@ -129,6 +129,30 @@ const deleteTask = asyncHandler(async (req, res) => {
   }
 });
 
+//get task by id
+const getTaskById = asyncHandler(async (req, res) => {
+    try {
+    
+      const task = await Tasks.findOne( {_id:req.params.Id} );
+  
+      if (!task) {
+        errorResponse({ res, message: "Task does not exists!" });
+      }
+      else {
+        successResponse({
+          res,
+          message: "task details fetch successfully",
+          data: task,
+        });
+      }
+  
+    } catch (error) {
+      console.log(error);
+      errorResponse({ res, message: "Something went wrong!" });
+    }
+  });
+  
+
 module.exports = {
   createTask,
   getAllTasks,
@@ -136,4 +160,5 @@ module.exports = {
   getIncompleteTasks,
   updateTask,
   deleteTask,
+  getTaskById
 };
